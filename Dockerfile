@@ -49,17 +49,17 @@ RUN apt-get update -y && \
                     -y --no-install-recommends && \
     mkdir /openvas-src && \
     cd /openvas-src && \
-        wget http://wald.intevation.org/frs/download.php/2291/openvas-libraries-8.0.7.tar.gz && \
-        wget http://wald.intevation.org/frs/download.php/2266/openvas-scanner-5.0.5.tar.gz && \
-        wget http://wald.intevation.org/frs/download.php/2295/openvas-manager-6.0.8.tar.gz && \
-        wget http://wald.intevation.org/frs/download.php/2299/greenbone-security-assistant-6.0.10.tar.gz && \
-        wget http://wald.intevation.org/frs/download.php/2209/openvas-cli-1.4.3.tar.gz && \
+        wget http://wald.intevation.org/frs/download.php/2291/openvas-libraries-8.0.8.tar.gz && \
+        wget http://wald.intevation.org/frs/download.php/2266/openvas-scanner-5.0.7.tar.gz && \
+        wget http://wald.intevation.org/frs/download.php/2295/openvas-manager-6.0.9.tar.gz && \
+        wget http://wald.intevation.org/frs/download.php/2299/greenbone-security-assistant-6.0.11.tar.gz && \
+        wget http://wald.intevation.org/frs/download.php/2209/openvas-cli-1.4.5.tar.gz && \
     cd /openvas-src/ && \
-        tar zxvf openvas-libraries-8.0.7.tar.gz && \
-        tar zxvf openvas-scanner-5.0.5.tar.gz && \
-        tar zxvf openvas-manager-6.0.8.tar.gz && \
-        tar zxvf greenbone-security-assistant-6.0.10.tar.gz && \
-        tar zxvf openvas-cli-1.4.3.tar.gz && \
+        tar zxvf openvas-libraries-8.0.8.tar.gz && \
+        tar zxvf openvas-scanner-5.0.7.tar.gz && \
+        tar zxvf openvas-manager-6.0.9.tar.gz && \
+        tar zxvf greenbone-security-assistant-6.0.11.tar.gz && \
+        tar zxvf openvas-cli-1.4.5.tar.gz && \
     cd /openvas-src/openvas-libraries-8.0.7 && \
         mkdir source && \
         cd source && \
