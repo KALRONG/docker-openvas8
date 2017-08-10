@@ -1,7 +1,7 @@
 # OpenVAS 8
 # Based on:  mikesplain openvas docker image
 
-FROM  debian
+FROM  debian:stretch-slim
 MAINTAINER  KALRONG <xrb@kalrong.net>
 
 RUN  apt-get update; apt-get -y upgrade; apt-get -y dist-upgrade
@@ -59,7 +59,7 @@ RUN  cd /openvas-src/ && \
         tar zxvf openvas-scanner-5.0.8.tar.gz && \
         tar zxvf openvas-manager-6.0.11.tar.gz && \
         tar zxvf greenbone-security-assistant-6.0.12.tar.gz && \
-        tar zxvf openvas-cli-1.4.5.tar.gz && \
+        tar zxvf openvas-cli-1.4.5.tar.gz
 RUN  cd /openvas-src/openvas-libraries-8.0.9 && \
         mkdir source && \
         cd source && \
