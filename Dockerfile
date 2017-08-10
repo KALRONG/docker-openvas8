@@ -49,11 +49,11 @@ RUN  apt-get install build-essential \
                     -y --no-install-recommends
 RUN  mkdir /openvas-src && \
 RUN  cd /openvas-src && \
-        wget http://wald.intevation.org/frs/download.php/2291/openvas-libraries-8.0.9.tar.gz && \
-        wget http://wald.intevation.org/frs/download.php/2266/openvas-scanner-5.0.8.tar.gz && \
-        wget http://wald.intevation.org/frs/download.php/2295/openvas-manager-6.0.11.tar.gz && \
-        wget http://wald.intevation.org/frs/download.php/2299/greenbone-security-assistant-6.0.12.tar.gz && \
-        wget http://wald.intevation.org/frs/download.php/2209/openvas-cli-1.4.5.tar.gz
+        wget http://wald.intevation.org/frs/download.php/2433/openvas-libraries-8.0.9.tar.gz && \
+        wget http://wald.intevation.org/frs/download.php/2436/openvas-scanner-5.0.8.tar.gz && \
+        wget http://wald.intevation.org/frs/download.php/2445/openvas-manager-6.0.11.tar.gz && \
+        wget http://wald.intevation.org/frs/download.php/2442/greenbone-security-assistant-6.0.12.tar.gz && \
+        wget http://wald.intevation.org/frs/download.php/2397/openvas-cli-1.4.5.tar.gz
 RUN  cd /openvas-src/ && \
         tar zxvf openvas-libraries-8.0.9.tar.gz && \
         tar zxvf openvas-scanner-5.0.8.tar.gz && \
