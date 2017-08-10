@@ -1,11 +1,11 @@
 # OpenVAS 8
 # Based on:  mikesplain openvas docker image
 
-FROM debian:stretch-slim
-MAINTAINER KALRONG <xrb@kalrong.net>
+FROM  debian
+MAINTAINER  KALRONG <xrb@kalrong.net>
 
-RUN apt-get update; apt-get -y upgrade; apt-get -y dist-upgrade
-RUN apt-get install build-essential \
+RUN  apt-get update; apt-get -y upgrade; apt-get -y dist-upgrade
+RUN  apt-get install build-essential \
 		    redis-server \
                     bison \
                     flex \
@@ -46,87 +46,83 @@ RUN apt-get install build-essential \
 		    libssh-dev \
       	            libhiredis-dev \
 		    libgcrypt-dev \
-                    -y --no-install-recommends && \
-    mkdir /openvas-src && \
-    cd /openvas-src && \
+                    -y --no-install-recommends
+RUN  mkdir /openvas-src && \
+RUN  cd /openvas-src && \
         wget http://wald.intevation.org/frs/download.php/2291/openvas-libraries-8.0.9.tar.gz && \
         wget http://wald.intevation.org/frs/download.php/2266/openvas-scanner-5.0.8.tar.gz && \
         wget http://wald.intevation.org/frs/download.php/2295/openvas-manager-6.0.11.tar.gz && \
         wget http://wald.intevation.org/frs/download.php/2299/greenbone-security-assistant-6.0.12.tar.gz && \
-        wget http://wald.intevation.org/frs/download.php/2209/openvas-cli-1.4.5.tar.gz && \
-    cd /openvas-src/ && \
+        wget http://wald.intevation.org/frs/download.php/2209/openvas-cli-1.4.5.tar.gz
+RUN  cd /openvas-src/ && \
         tar zxvf openvas-libraries-8.0.9.tar.gz && \
         tar zxvf openvas-scanner-5.0.8.tar.gz && \
         tar zxvf openvas-manager-6.0.11.tar.gz && \
         tar zxvf greenbone-security-assistant-6.0.12.tar.gz && \
         tar zxvf openvas-cli-1.4.5.tar.gz && \
-    cd /openvas-src/openvas-libraries-8.0.9 && \
+RUN  cd /openvas-src/openvas-libraries-8.0.9 && \
         mkdir source && \
         cd source && \
         cmake .. && \
         make && \
-        make install && \
-    cd /openvas-src/openvas-scanner-5.0.8 && \
+        make install
+RUN  cd /openvas-src/openvas-scanner-5.0.8 && \
         mkdir source && \
         cd source && \
         cmake .. && \
         make && \
-        make install && \
-    cd /openvas-src/openvas-manager-6.0.11 && \
+        make install
+RUN  cd /openvas-src/openvas-manager-6.0.11 && \
         mkdir source && \
         cd source && \
         cmake .. && \
         make && \
-        make install && \
-    cd /openvas-src/greenbone-security-assistant-6.0.12 && \
+        make install
+RUN  cd /openvas-src/greenbone-security-assistant-6.0.12 && \
         mkdir source && \
         cd source && \
         cmake .. && \
         make && \
-        make install && \
-    cd /openvas-src/openvas-cli-1.4.5 && \
+        make install
+RUN  cd /openvas-src/openvas-cli-1.4.5 && \
         mkdir source && \
         cd source && \
         cmake .. && \
         make && \
-        make install && \
-    rm -rf /openvas-src && \
-    mkdir /dirb && \
-    cd /dirb && \
-    wget http://downloads.sourceforge.net/project/dirb/dirb/2.22/dirb222.tar.gz && \
-        tar -zxvf dirb222.tar.gz && \
-        cd dirb222 && \
-        chmod 700 -R * && \
-        ./configure && \
-        make && \
-        make install && \
-    cd / && \
-    cd /tmp && \
-    wget https://github.com/Arachni/arachni/releases/download/v1.2.1/arachni-1.2.1-0.5.7.1-linux-x86_64.tar.gz && \
-        tar -zxvf arachni-1.2.1-0.5.7.1-linux-x86_64.tar.gz && \
-        mv arachni-1.2.1-0.5.7.1 /opt/arachni && \
-        ln -s /opt/arachni/bin/* /usr/local/bin/ && \
-    cd ~ && \
-    wget https://github.com/sullo/nikto/archive/master.zip && \
-    unzip master.zip -d /tmp && \
-    mv /tmp/nikto-master/program /opt/nikto && \
-    rm -rf /tmp/nikto-master && \
-    echo "EXECDIR=/opt/nikto\nPLUGINDIR=/opt/nikto/plugins\nDBDIR=/opt/nikto/databases\nTEMPLATEDIR=/opt/nikto/templates\nDOCDIR=/opt/nikto/docs" >> /opt/nikto/nikto.conf && \
-    ln -s /opt/nikto/nikto.pl /usr/local/bin/nikto.pl && \
-    ln -s /opt/nikto/nikto.conf /etc/nikto.conf && \
-    mkdir -p /openvas && \
-    wget https://svn.wald.intevation.org/svn/openvas/trunk/tools/openvas-check-setup --no-check-certificate -O /openvas/openvas-check-setup && \
-    chmod a+x /openvas/openvas-check-setup && \
-    apt-get clean -yq && \
-    apt-get autoremove -yq && \
-    apt-get purge -y --auto-remove build-essential cmake
+        make install
+RUN  rm -rf /openvas-src
+RUN  mkdir /dirb
+RUN  cd /dirb && \
+     wget http://downloads.sourceforge.net/project/dirb/dirb/2.22/dirb222.tar.gz && \
+     tar -zxvf dirb222.tar.gz && \
+     cd dirb222 && \
+     chmod 700 -R * && \
+     ./configure && \
+     make && \
+     make install && \
+RUN  cd /tmp && \
+     wget https://github.com/Arachni/arachni/releases/download/v1.2.1/arachni-1.2.1-0.5.7.1-linux-x86_64.tar.gz && \
+     tar -zxvf arachni-1.2.1-0.5.7.1-linux-x86_64.tar.gz && \
+     mv arachni-1.2.1-0.5.7.1 /opt/arachni && \
+     ln -s /opt/arachni/bin/* /usr/local/bin/ && \
+RUN  wget https://github.com/sullo/nikto/archive/master.zip && \
+     unzip master.zip -d /tmp && \
+     mv /tmp/nikto-master/program /opt/nikto && \
+     rm -rf /tmp/nikto-master && \
+     echo "EXECDIR=/opt/nikto\nPLUGINDIR=/opt/nikto/plugins\nDBDIR=/opt/nikto/databases\nTEMPLATEDIR=/opt/nikto/templates\nDOCDIR=/opt/nikto/docs" >> /opt/nikto/nikto.conf && \
+     ln -s /opt/nikto/nikto.pl /usr/local/bin/nikto.pl && \
+     ln -s /opt/nikto/nikto.conf /etc/nikto.conf && \
+RUN  mkdir -p /openvas && \
+     wget https://svn.wald.intevation.org/svn/openvas/trunk/tools/openvas-check-setup --no-check-certificate -O /openvas/openvas-check-setup && \
+     chmod a+x /openvas/openvas-check-setup && \
+RUN  apt-get purge -y --auto-remove build-essential cmake
 
-ADD bin/* /openvas/
-ADD config/* /etc/redis/
-RUN chmod 700 /openvas/*.sh && \
-    bash /openvas/setup.sh
+ADD  bin/* /openvas/
+ADD  config/* /etc/redis/
+RUN  chmod 700 /openvas/*.sh && \
+     bash /openvas/setup.sh
 
-CMD bash /openvas/start.sh
+CMD  bash /openvas/start.sh
 
 # Expose UI
 EXPOSE 443 9390 9391 9392
