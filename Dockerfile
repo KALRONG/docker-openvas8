@@ -47,7 +47,7 @@ RUN  apt-get install build-essential \
       	            libhiredis-dev \
 		    libgcrypt-dev \
                     -y --no-install-recommends
-RUN  mkdir /openvas-src && \
+RUN  mkdir /openvas-src
 RUN  cd /openvas-src && \
         wget http://wald.intevation.org/frs/download.php/2433/openvas-libraries-8.0.9.tar.gz && \
         wget http://wald.intevation.org/frs/download.php/2436/openvas-scanner-5.0.8.tar.gz && \
