@@ -18,13 +18,13 @@ echo "Starting Openvas..."
 
 echo "Starting gsad"
 # http://wiki.openvas.org/index.php/Edit_the_SSL_ciphers_used_by_GSAD
-./gsad --gnutls-priorities="SECURE128:-AES-128-CBC:-CAMELLIA-128-CBC:-VERS-SSL3.0:-VERS-TLS1.0" $set_http_only
+gsad --gnutls-priorities="SECURE128:-AES-128-CBC:-CAMELLIA-128-CBC:-VERS-SSL3.0:-VERS-TLS1.0" $set_http_only
 
-./openvassd --listen=127.0.0.1
-./openvasmd --listen=127.0.0.1
+openvassd --listen=127.0.0.1
+openvasmd --listen=127.0.0.1
 echo "Starting rebuild process..."
 echo "This may take a minute or two..."
-./openvasmd --rebuild
+openvasmd --rebuild
 
 echo "Checking setup"
 
