@@ -10,8 +10,8 @@ ldconfig
 test -e /var/lib/openvas/CA/cacert.pem  || openvas-mkcert -q
 openvas-nvt-sync
 test -e /var/lib/openvas/users/om || openvas-mkcert-client -n -i
-/etc/init.d/openvas-manager stop
-/etc/init.d/openvas-scanner stop
+killall openvassd
+killall openvasmd
 openvassd
 openvasmd --rebuild
 openvas-scapdata-sync

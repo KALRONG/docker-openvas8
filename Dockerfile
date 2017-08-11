@@ -117,7 +117,7 @@ RUN  wget https://github.com/sullo/nikto/archive/master.zip && \
      ln -s /opt/nikto/nikto.conf /etc/nikto.conf
 RUN  mkdir -p /openvas && \
      wget https://svn.wald.intevation.org/svn/openvas/trunk/tools/openvas-check-setup --no-check-certificate -O /openvas/openvas-check-setup && \
-     chmod a+x /openvas/openvas-check-setup && \
+     chmod a+x /openvas/openvas-check-setup
 RUN  apt-get purge -y --auto-remove build-essential cmake
 
 ADD  bin/* /openvas/
